@@ -1,24 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvvfp1t37q5cp"]
+[gd_scene load_steps=5 format=3 uid="uid://dwv75pvpyf0oh"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_sgaqd"]
-[ext_resource type="Texture2D" uid="uid://bqgqsw5ev1s46" path="res://icon.svg" id="2_wo2au"]
-[ext_resource type="Script" path="res://scenes/window.gd" id="3_6nf5w"]
-[ext_resource type="PackedScene" uid="uid://dmaw74mx08jfy" path="res://scenes/world.tscn" id="4_dmpyj"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_6ydvd"]
+[ext_resource type="PackedScene" uid="uid://ca1upy5hkxphd" path="res://scenes/Levels/Level.tscn" id="1_usudm"]
+[ext_resource type="PackedScene" uid="uid://daw7fr8pw02et" path="res://scenes/view_window.tscn" id="2_boco6"]
+[ext_resource type="PackedScene" uid="uid://dtageuhrp3fwt" path="res://scenes/Entities/Player.tscn" id="2_f7c4c"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_sgaqd")
+script = ExtResource("1_6ydvd")
+main_camera_node = NodePath("Player/Camera2D")
+view_window = ExtResource("2_boco6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(432, 183)
-texture = ExtResource("2_wo2au")
+[node name="Level" parent="." instance=ExtResource("1_usudm")]
 
-[node name="Window" type="Window" parent="."]
-initial_position = 1
-size = Vector2i(200, 200)
-script = ExtResource("3_6nf5w")
+[node name="Player" parent="." instance=ExtResource("2_f7c4c")]
 
-[node name="Camera2D" type="Camera2D" parent="Window"]
-
-[node name="World" parent="." instance=ExtResource("4_dmpyj")]
-position = Vector2(-243, -1)
-scale = Vector2(0.922471, 0.871911)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://daw7fr8pw02et"]
+
+[ext_resource type="Script" path="res://scripts/view_window.gd" id="1_oc0di"]
+
+[node name="ViewWindow" type="Window"]
+title = "World"
+initial_position = 1
+size = Vector2i(520, 520)
+unresizable = true
+script = ExtResource("1_oc0di")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
