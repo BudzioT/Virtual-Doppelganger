@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwv75pvpyf0oh"]
+[gd_scene load_steps=5 format=3 uid="uid://cvvfp1t37q5cp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_6ydvd"]
 [ext_resource type="PackedScene" uid="uid://ca1upy5hkxphd" path="res://scenes/Levels/Level.tscn" id="1_usudm"]
-[ext_resource type="PackedScene" uid="uid://daw7fr8pw02et" path="res://scenes/view_window.tscn" id="2_boco6"]
+[ext_resource type="PackedScene" uid="uid://car60t0i7ri81" path="res://scenes/view_window.tscn" id="2_boco6"]
 [ext_resource type="PackedScene" uid="uid://dtageuhrp3fwt" path="res://scenes/Entities/Player.tscn" id="2_f7c4c"]
 
 [node name="Main" type="Node"]
@@ -15,4 +15,5 @@ view_window = ExtResource("2_boco6")
 [node name="Player" parent="." instance=ExtResource("2_f7c4c")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
+visibility_layer = 2
+zoom = Vector2(2, 2)

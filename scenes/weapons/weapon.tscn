@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwca51gidf7wn"]
+
+[ext_resource type="Texture2D" uid="uid://br67640cwvl8g" path="res://assets/images/Guns sprite sheet/Glock - P80 [64x48]/[EMPTY] Glock - P80.png" id="1_r78gy"]
+[ext_resource type="Script" path="res://scripts/Weapons/weapon.gd" id="1_y0eaa"]
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_23tkp"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_y0eaa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r78gy")
+hframes = 16
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationRootNode_23tkp")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

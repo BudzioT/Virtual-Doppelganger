@@ -1,0 +1,153 @@
+[gd_scene load_steps=7 format=3 uid="uid://iw8db1264ffp"]
+
+[ext_resource type="PackedScene" uid="uid://cwca51gidf7wn" path="res://scenes/weapons/weapon.tscn" id="1_frido"]
+[ext_resource type="Texture2D" uid="uid://bufoiq4dt8ij3" path="res://assets/images/Guns sprite sheet/Glock - P80 [64x48]/[SHOOT] Glock - P80.png" id="2_ghfh0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ketv"]
+particle_flag_disable_z = true
+angle_min = -298.8
+angle_max = 244.5
+inherit_velocity_ratio = 1.0
+velocity_pivot = Vector3(1, 1, 0)
+direction = Vector3(1, 1, 0)
+spread = 43.824
+initial_velocity_min = 56.6
+initial_velocity_max = 109.68
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+gravity = Vector3(60, 50, 0)
+scale_max = 2.0
+color = Color(1, 1, 0.611765, 1)
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.23
+
+[sub_resource type="Animation" id="Animation_br4f5"]
+resource_name = "Idle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ghfh0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f6t0a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ghfh0")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d7h1c"]
+_data = {
+"Idle": SubResource("Animation_br4f5"),
+"RESET": SubResource("Animation_f6t0a")
+}
+
+[node name="Gun" instance=ExtResource("1_frido")]
+position = Vector2(272, 174)
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ghfh0")
+hframes = 15
+
+[node name="GPUParticles2D" parent="." index="1"]
+position = Vector2(23, -12)
+emitting = false
+amount = 15
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_8ketv")
+lifetime = 0.8
+one_shot = true
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_d7h1c")
+}
+autoplay = "Idle"
