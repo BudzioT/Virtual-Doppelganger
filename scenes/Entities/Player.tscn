@@ -100,4 +100,4 @@ action_down = "move_down"
 character_node = NodePath("..")
 
 [node name="Gun" parent="." instance=ExtResource("11_64xhi")]
-position = Vector2(4.5, 5)
+position = Vector2(1.5, 7)
