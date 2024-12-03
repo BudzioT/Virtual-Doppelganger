@@ -32,9 +32,11 @@ func _ready() -> void:
 	main_window.set_canvas_cull_mask_bit(player_visibility_layer, true)
 	main_window.set_canvas_cull_mask_bit(world_visibility_layer, false)
 	
-	world_offset = Vector2i(main_screen_rect.size.x / 2, main_screen_rect.size.y)
+	world_offset = Vector2i(main_screen_rect.size.x / 2.0, main_screen_rect.size.y)
 	
-func _process(delta: float) -> void:
+	$Player/Gun.connect("shoot", Callable(self, "_handle_shoot"))
+	
+func _process(_delta: float) -> void:
 	main_window.position = get_window_pos()
 	
 func get_window_pos() -> Vector2i:
@@ -59,3 +61,7 @@ func create_view_window():
 	new_window.set_canvas_cull_mask_bit(player_visibility_layer, false)
 	new_window.set_canvas_cull_mask_bit(world_visibility_layer, true)
 	add_child(new_window)
+	
+func _handle_shoot():
+	"""Spawn a bulllet once player shoots"""
+	

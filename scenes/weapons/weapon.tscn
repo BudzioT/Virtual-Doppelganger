@@ -5,8 +5,8 @@
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_23tkp"]
 
-[sub_resource type="Animation" id="Animation_gqlcf"]
-resource_name = "Shoot"
+[sub_resource type="Animation" id="Animation_wf7s6"]
+resource_name = "Reload"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -56,8 +56,8 @@ tracks/3/keys = {
 "values": []
 }
 
-[sub_resource type="Animation" id="Animation_wf7s6"]
-resource_name = "Reload"
+[sub_resource type="Animation" id="Animation_gqlcf"]
+resource_name = "Shoot"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -132,5 +132,5 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true

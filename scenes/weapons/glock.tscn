@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://iw8db1264ffp"]
+[gd_scene load_steps=9 format=3 uid="uid://iw8db1264ffp"]
 
 [ext_resource type="PackedScene" uid="uid://cwca51gidf7wn" path="res://scenes/weapons/weapon.tscn" id="1_frido"]
-[ext_resource type="Texture2D" uid="uid://bufoiq4dt8ij3" path="res://assets/images/Guns sprite sheet/Glock - P80 [64x48]/[SHOOT] Glock - P80.png" id="2_ghfh0"]
+[ext_resource type="Texture2D" uid="uid://djx2chs34p34s" path="res://assets/images/Guns sprite sheet/Glock - P80 [64x48]/[RELOAD] Glock - P80.png" id="3_56g6q"]
+[ext_resource type="Texture2D" uid="uid://48vtqmji16uk" path="res://assets/images/Guns sprite sheet/Glock - P80 [64x48]/[SHOOT WITH CASING AND MUZZLE FLASH] Glock - P80.png" id="4_r5cs8"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ketv"]
 particle_flag_disable_z = true
@@ -11,18 +12,20 @@ inherit_velocity_ratio = 1.0
 velocity_pivot = Vector3(1, 1, 0)
 direction = Vector3(1, 1, 0)
 spread = 43.824
-initial_velocity_min = 56.6
-initial_velocity_max = 109.68
+initial_velocity_min = 75.46
+initial_velocity_max = 113.2
 angular_velocity_min = -1.60933e-05
 angular_velocity_max = -1.60933e-05
 gravity = Vector3(60, 50, 0)
 scale_max = 2.0
+scale_over_velocity_min = 56.6
+scale_over_velocity_max = 75.47
 color = Color(1, 1, 0.611765, 1)
 hue_variation_min = -2.23517e-08
 hue_variation_max = 0.23
 
-[sub_resource type="Animation" id="Animation_n254h"]
-resource_name = "Reload"
+[sub_resource type="Animation" id="Animation_jj0ci"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -30,10 +33,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [ExtResource("3_56g6q")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -42,10 +45,10 @@ tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [16]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -54,26 +57,55 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GPUParticles2D:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+
+[sub_resource type="Animation" id="Animation_n254h"]
+resource_name = "Reload"
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [ExtResource("3_56g6q")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875, 0.25, 0.3125, 0.375, 0.4375, 0.5, 0.5625, 0.625, 0.6875, 0.75, 0.8125, 0.875, 0.9375),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 }
 
 [sub_resource type="Animation" id="Animation_tckfn"]
 resource_name = "Shoot"
+step = 0.0833
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -81,10 +113,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [ExtResource("4_r5cs8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -93,10 +125,10 @@ tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [12]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -105,10 +137,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": []
+"values": [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -117,14 +149,15 @@ tracks/3/path = NodePath("GPUParticles2D:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0.0833333),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d7h1c"]
 _data = {
+"RESET": SubResource("Animation_jj0ci"),
 "Reload": SubResource("Animation_n254h"),
 "Shoot": SubResource("Animation_tckfn")
 }
@@ -132,24 +165,25 @@ _data = {
 [node name="Gun" instance=ExtResource("1_frido")]
 visibility_layer = 2
 position = Vector2(272, 174)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 
 [node name="Sprite2D" parent="." index="0"]
 visibility_layer = 2
-texture = ExtResource("2_ghfh0")
-hframes = 15
+texture = ExtResource("3_56g6q")
 
 [node name="GPUParticles2D" parent="." index="1"]
 visibility_layer = 2
-position = Vector2(23, -12)
+position = Vector2(16.6667, -9.99998)
 emitting = false
-amount = 15
+amount = 100
 sub_emitter = NodePath(".")
 process_material = SubResource("ParticleProcessMaterial_8ketv")
-lifetime = 0.8
 one_shot = true
+speed_scale = 1.87
+explosiveness = 0.09
 
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_d7h1c")
 }
+autoplay = "RESET"

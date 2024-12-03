@@ -15,7 +15,7 @@ func _ready() -> void:
 	transient = true
 	close_requested.connect(queue_free)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	velocity = position - last_position
 	last_position = position
 	camera.position = get_camera_pos()
